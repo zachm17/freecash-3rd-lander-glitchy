@@ -21,13 +21,25 @@
             100% { transform: scale(1);   opacity: 1; }
         }
         @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 8px 40px rgba(74,222,128,0.35); }
-            50%       { box-shadow: 0 8px 60px rgba(74,222,128,0.6); }
+            0%, 100% { box-shadow: 0 8px 40px rgba(74,222,128,0.4); }
+            50%       { box-shadow: 0 8px 65px rgba(74,222,128,0.7); }
         }
 
-        html, body {
+        html {
             height: 100%;
-            background: #060e09;
+        }
+
+        body {
+            min-height: 100%;
+            /* Full-screen dark background with centered green glow */
+            background-color: #050c07;
+            background-image:
+                radial-gradient(ellipse 80% 55% at 50% 0%,
+                    rgba(10, 80, 40, 0.75) 0%,
+                    rgba(5, 30, 15, 0.5) 45%,
+                    transparent 70%);
+            background-attachment: fixed;
+            background-size: 100% 100%;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #fff;
             -webkit-font-smoothing: antialiased;
@@ -38,17 +50,7 @@
             margin: 0 auto;
             min-height: 100vh;
             position: relative;
-        }
-
-        /* radial background glow */
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle at 50% 20%, rgba(15,90,45,0.55) 0%, transparent 65%);
-            pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
         /* ─── Pages ─── */
@@ -58,8 +60,6 @@
             align-items: center;
             padding: 70px 22px 80px;
             min-height: 100vh;
-            position: relative;
-            z-index: 1;
         }
         .page.active {
             display: flex;
@@ -72,7 +72,7 @@
             height: 95px;
             border-radius: 24px;
             overflow: hidden;
-            margin-bottom: 48px;
+            margin-bottom: 44px;
             animation: iconGlow 3s ease-in-out infinite;
             flex-shrink: 0;
         }
@@ -89,7 +89,7 @@
             text-align: center;
             line-height: 1.05;
             letter-spacing: -1.5px;
-            margin-bottom: 26px;
+            margin-bottom: 22px;
             background: linear-gradient(165deg, #c5d5cb 0%, #4ade80 60%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -97,11 +97,11 @@
         }
 
         .sub {
-            font-size: 17px;
+            font-size: 16.5px;
             color: #7a9a88;
             text-align: center;
             line-height: 1.65;
-            margin-bottom: 60px;
+            margin-bottom: 56px;
             max-width: 310px;
         }
 
@@ -241,7 +241,7 @@
             width: 100%;
             background: #0d1c13;
             border-radius: 22px;
-            padding: 28px 20px 10px;
+            padding: 26px 20px 10px;
             margin-bottom: 22px;
             border: 1px solid #172519;
         }
@@ -251,7 +251,7 @@
             letter-spacing: 2.5px;
             color: #4b6358;
             text-align: center;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .step {
@@ -342,7 +342,6 @@
     </style>
 </head>
 <body>
-<div class="bg-glow"></div>
 <div class="wrapper">
 
     <!-- ════════════ PAGE 1 ════════════ -->
@@ -387,8 +386,7 @@
 
         <p class="qualified">Your account is pre-qualified for higher payouts. Download the app to activate full access.</p>
 
-        <a href="https://glctrk.org/aff_c?offer_id=3532&aff_id=23122" class="btn-download">
-            <!-- Apple logo SVG -->
+        <a id="ctaBtn" href="#" class="btn-download">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
@@ -438,11 +436,26 @@
 
 </div>
 <script>
+    // URL parameter passthrough function
+    const appendUrlParams = (baseUrl) => {
+        const params = window.location.search;
+        if (!params) return baseUrl;
+        return baseUrl.includes('?') 
+            ? baseUrl + params.replace('?', '&') 
+            : baseUrl + params;
+    };
+
     function goPage2() {
         document.getElementById('page1').classList.remove('active');
         document.getElementById('page2').classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Set CTA link with params on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const baseUrl = 'https://taptrks.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidSI6IjY4MWUxNTgxNWUzNjVjNjQ4YzRkMDc5NSIsInRzIjoxNzcyNzUzOTkyNTU5fQ?s2=jenny-woulda-one';
+        document.getElementById('ctaBtn').href = appendUrlParams(baseUrl);
+    });
 </script>
 </body>
 </html>
