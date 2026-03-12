@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Paid to Scroll</title>
+    <title>Word Betaald om te Scrollen</title>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -31,7 +31,6 @@
 
         body {
             min-height: 100%;
-            /* Full-screen dark background with centered green glow */
             background-color: #050c07;
             background-image:
                 radial-gradient(ellipse 80% 55% at 50% 0%,
@@ -53,7 +52,6 @@
             z-index: 1;
         }
 
-        /* ─── Pages ─── */
         .page {
             display: none;
             flex-direction: column;
@@ -66,7 +64,6 @@
             animation: fadeInUp 0.45s ease-out both;
         }
 
-        /* ─── App Icon ─── */
         .app-icon {
             width: 95px;
             height: 95px;
@@ -82,9 +79,8 @@
             display: block;
         }
 
-        /* ─── PAGE 1 ─── */
         .headline {
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 900;
             text-align: center;
             line-height: 1.05;
@@ -166,7 +162,6 @@
             font-weight: 500;
         }
 
-        /* ─── PAGE 2 ─── */
         .youre-in-row {
             display: flex;
             align-items: center;
@@ -236,7 +231,6 @@
             letter-spacing: 1.5px;
         }
 
-        /* Journey Card */
         .journey-card {
             width: 100%;
             background: #0d1c13;
@@ -286,7 +280,6 @@
             line-height: 1.5;
         }
 
-        /* Important Box */
         .important-box {
             width: 100%;
             background: #0d1c13;
@@ -334,8 +327,8 @@
         }
 
         @media (max-width: 360px) {
-            .headline { font-size: 44px; }
-            .youre-in-text { font-size: 40px; }
+            .headline { font-size: 38px; }
+            .youre-in-text { font-size: 38px; }
             .app-icon { width: 80px; height: 80px; border-radius: 20px; }
             .page { padding: 50px 16px 60px; }
         }
@@ -344,31 +337,31 @@
 <body>
 <div class="wrapper">
 
-    <!-- ════════════ PAGE 1 ════════════ -->
+    <!-- ════════════ PAGINA 1 ════════════ -->
     <div class="page active" id="page1">
 
         <div class="app-icon">
             <img src="https://i.imgur.com/1UmZT5o.png" alt="Freecash">
         </div>
 
-        <h1 class="headline">Get Paid to Scroll</h1>
+        <h1 class="headline">Word Betaald om te Scrollen</h1>
 
-        <p class="sub">Join thousands earning daily by completing offers and cashing out instantly.</p>
+        <p class="sub">Sluit je aan bij duizenden die dagelijks verdienen door opdrachten te voltooien en direct uitbetaald te worden.</p>
 
         <div class="btn-stack">
             <button class="btn-green" onclick="goPage2()">
-                <span class="b-main">I'm over 21</span>
-                <span class="b-sub">Instant Payouts: PayPal, CashApp, Venmo, Crypto &amp; Wire</span>
+                <span class="b-main">Ik ben ouder dan 21</span>
+                <span class="b-sub">Directe Uitbetaling: PayPal, CashApp, Venmo, Crypto &amp; Overboeking</span>
             </button>
             <button class="btn-dark" onclick="goPage2()">
-                <span class="b-main">I'm under 21</span>
-                <span class="b-sub">Limited Payouts: Wire Transfer Only</span>
+                <span class="b-main">Ik ben jonger dan 21</span>
+                <span class="b-sub">Beperkte Uitbetaling: Alleen Bankoverboeking</span>
             </button>
         </div>
 
     </div>
 
-    <!-- ════════════ PAGE 2 ════════════ -->
+    <!-- ════════════ PAGINA 2 ════════════ -->
     <div class="page" id="page2">
 
         <div class="app-icon">
@@ -381,67 +374,66 @@
                     <polyline points="20 6 9 17 4 12"/>
                 </svg>
             </div>
-            <div class="youre-in-text">You're In!</div>
+            <div class="youre-in-text">Gelukt!</div>
         </div>
 
-        <p class="qualified">Your account is pre-qualified for higher payouts. Download the app to activate full access.</p>
+        <p class="qualified">Jouw account is vooraf goedgekeurd voor hogere uitbetalingen. Download de app om volledige toegang te activeren.</p>
 
         <a id="ctaBtn" href="#" class="btn-download">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            <span class="dl-text">DOWNLOAD NOW</span>
+            <span class="dl-text">NU DOWNLOADEN</span>
         </a>
 
         <div class="journey-card">
-            <div class="journey-label">Your Earning Journey</div>
+            <div class="journey-label">Jouw Verdientraject</div>
 
             <div class="step">
                 <div class="step-num">1</div>
                 <div>
-                    <div class="step-title">Download the Freecash App</div>
-                    <div class="step-desc">Available on iOS &amp; Android — Takes less than 60 seconds</div>
+                    <div class="step-title">Download de Freecash App</div>
+                    <div class="step-desc">Beschikbaar op iOS &amp; Android — Duurt minder dan 60 seconden</div>
                 </div>
             </div>
 
             <div class="step">
                 <div class="step-num">2</div>
                 <div>
-                    <div class="step-title">Complete Daily Offers</div>
-                    <div class="step-desc">Watch videos, test apps &amp; games, or take surveys!</div>
+                    <div class="step-title">Voltooi Dagelijkse Opdrachten</div>
+                    <div class="step-desc">Bekijk video's, test apps &amp; games, of vul enquêtes in!</div>
                 </div>
             </div>
 
             <div class="step">
                 <div class="step-num">3</div>
                 <div>
-                    <div class="step-title">Cash Out Your Earnings</div>
-                    <div class="step-desc">Instant Payouts: PayPal, CashApp, Venmo, Crypto &amp; Wire</div>
+                    <div class="step-title">Laat Je Verdiensten Uitbetalen</div>
+                    <div class="step-desc">Directe Uitbetaling: PayPal, CashApp, Venmo, Crypto &amp; Overboeking</div>
                 </div>
             </div>
         </div>
 
         <div class="important-box">
-            <div class="imp-badge">⚠️ IMPORTANT</div>
+            <div class="imp-badge">⚠️ BELANGRIJK</div>
             <div class="imp-header">
                 <span class="lock">🔒</span>
-                <span class="imp-title">Activation Required</span>
+                <span class="imp-title">Activering Vereist</span>
             </div>
-            <p class="imp-desc">New users: Complete <strong>2 quick offers</strong> to unlock paid to scroll features and start earning rewards!</p>
+            <p class="imp-desc">Nieuwe gebruikers: Voltooi <strong>2 snelle opdrachten</strong> om de betaald-om-te-scrollen functies te ontgrendelen en beloningen te verdienen!</p>
         </div>
 
-        <p class="trusted">Trusted by over 500,000 users earning money daily</p>
+        <p class="trusted">Vertrouwd door meer dan 500.000 gebruikers die dagelijks geld verdienen</p>
 
     </div>
 
 </div>
 <script>
-    // URL parameter passthrough function
     const appendUrlParams = (baseUrl) => {
         const params = window.location.search;
         if (!params) return baseUrl;
-        return baseUrl.includes('?') 
-            ? baseUrl + params.replace('?', '&') 
+        return baseUrl.includes('?')
+            ? baseUrl + params.replace('?', '&')
             : baseUrl + params;
     };
 
@@ -451,16 +443,10 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Set CTA link with params on page load
     document.addEventListener('DOMContentLoaded', () => {
-        const baseUrl = 'https://raintrks.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpLWIiLCJ1IjoiNjgxZTE1ODE1ZTM2NWM2NDhjNGQwNzk1IiwidHMiOjE3NzMxNjY2MjA2MzF9?s2=sarah-bus-afternoo';
+        const baseUrl = 'https://giftclick.org/aff_c?offer_id=3532&aff_id=23122&source=hope-dutch';
         document.getElementById('ctaBtn').href = appendUrlParams(baseUrl);
     });
 </script>
 </body>
 </html>
-
-
-
-
-
