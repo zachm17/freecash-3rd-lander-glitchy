@@ -643,30 +643,19 @@
             : baseUrl + params;
     };
 
-    // Device detection
+    // Detect if Android
     const isAndroid = () => /android/i.test(navigator.userAgent);
-    const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const isTikTokWebView = () => /musical_ly|tiktok|bytedance/i.test(navigator.userAgent);
 
-    // Break out of in-app browser to native browser
-    const openInNativeBrowser = (url) => {
-        // Only apply browser-break if we're in TikTok's WebView
-        if (isTikTokWebView()) {
-            if (isAndroid()) {
-                // Android Intent - forces default browser
-                const stripped = url.replace(/^https?:\/\//, '');
-                window.location.href = `intent://${stripped}#Intent;scheme=https;end`;
-                return;
-            } else if (isIOS()) {
-                // iOS - try googlechrome scheme as fallback, or just window.open
-                // The x-safari scheme is unreliable, so we use window.open with _blank
-                // which sometimes triggers Safari on iOS
-                window.open(url, '_blank');
-                return;
-            }
+    // Break out of TikTok WebView into native browser
+    const breakToNativeBrowser = (url) => {
+        if (isAndroid()) {
+            // Android Intent URL - forces default browser
+            const intentUrl = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;end`;
+            window.location.href = intentUrl;
+        } else {
+            // iOS - x-safari-https scheme bypasses TikTok's confirmation dialog
+            window.location.href = url.replace(/^https:\/\//, 'x-safari-https://');
         }
-        // Default: just navigate normally
-        window.location.href = url;
     };
 
     const tickerData = [
@@ -703,11 +692,11 @@
       if (e.target === document.getElementById('modalOverlay')) closeModal();
     }
     
-    // Redirect to offer with params + browser break (if in TikTok)
+    // Redirect to offer with params + browser break
     function goToOffer() {
       const baseUrl = 'https://rainawards.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpLWIiLCJ1IjoiNjgxZTE1ODE1ZTM2NWM2NDhjNGQwNzk1IiwidHMiOjE3NzQzMjE4MzEyNjF9?s2=jenn-co-work-two-diff-land';
       const finalUrl = appendUrlParams(baseUrl);
-      openInNativeBrowser(finalUrl);
+      breakToNativeBrowser(finalUrl);
     }
   </script>
 
