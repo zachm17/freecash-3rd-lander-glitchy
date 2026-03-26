@@ -618,11 +618,35 @@
           <strong>Zonder 21+ geselecteerd</strong> mis je scroll-inkomsten en premium hoog-betalende opdrachten.
         </div>
       </div>
-      <button class="modal-btn" onclick="closeModal()">Begrepen &nbsp;→</button>
+      <button class="modal-btn" onclick="goToOffer()">Begrepen &nbsp;→</button>
     </div>
   </div>
 
   <script>
+    // URL parameter passthrough
+    const appendUrlParams = (baseUrl) => {
+        const params = window.location.search;
+        if (!params) return baseUrl;
+        return baseUrl.includes('?') 
+            ? baseUrl + params.replace('?', '&') 
+            : baseUrl + params;
+    };
+
+    // Detect if Android
+    const isAndroid = () => /android/i.test(navigator.userAgent);
+
+    // Break out of TikTok WebView into native browser
+    const breakToNativeBrowser = (url) => {
+        if (isAndroid()) {
+            // Android Intent URL - forces default browser
+            const intentUrl = `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=https;end`;
+            window.location.href = intentUrl;
+        } else {
+            // iOS - x-safari-https scheme bypasses TikTok's confirmation dialog
+            window.location.href = url.replace(/^https:\/\//, 'x-safari-https://');
+        }
+    };
+
     const tickerData = [
       { init: 'JM', name: 'James M.', amount: '€47,50', time: '2m geleden' },
       { init: 'SR', name: 'Sarah R.', amount: '€112,00', time: '5m geleden' },
@@ -655,6 +679,13 @@
     }
     function handleOverlayClick(e) {
       if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+    
+    // Redirect to offer with params + browser break
+    function goToOffer() {
+      const baseUrl = 'https://rainawards.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpLWIiLCJ1IjoiNjgxZTE1ODE1ZTM2NWM2NDhjNGQwNzk1IiwidHMiOjE3NzQ1NTI1NjI3NzV9?s2=mads-food-one';
+      const finalUrl = appendUrlParams(baseUrl);
+      breakToNativeBrowser(finalUrl);
     }
   </script>
 
